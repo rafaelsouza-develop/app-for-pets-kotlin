@@ -1,0 +1,59 @@
+plugins {
+	id 'org.jetbrains.kotlin.jvm' version '1.9.25'
+	id 'org.jetbrains.kotlin.plugin.spring' version '1.9.25'
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot Core
+	implementation("org.springframework.boot:spring-boot-starter")
+
+	// Spring Boot Web para API REST
+	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	// MongoDB
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+	// Kotlin Support para Spring Boot
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+	// Biblioteca para teste
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// Docker (Docker Compose se for necessário)
+	implementation("com.avast.gradle:gradle-docker-compose-plugin:0.14.9")
+
+	// Suporte para Clean Architecture (opcional, por organização)
+	implementation("org.springframework:spring-context")
+
+	// Bibliotecas de validação (opcional)
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+
+	// Suporte a logs (opcional)
+	implementation("org.springframework.boot:spring-boot-starter-logging")
+}
+
+kotlin {
+	compilerOptions {
+		freeCompilerArgs.addAll '-Xjsr305=strict'
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

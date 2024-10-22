@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:admin@app-for-pets.lvlon.mongodb.net/?retryWrites=true&w=majority&appName=app-for-pets
+  application:
+    name: "PetFinderAPI"  # Nome da aplicação
+
+server:
+  port: 8080  # Porta em que a aplicação irá rodar
+
+logging:
+  level:
+    org.springframework: INFO  # Nível de log da aplicação
