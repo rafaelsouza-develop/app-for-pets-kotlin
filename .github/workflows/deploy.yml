@@ -22,6 +22,7 @@ jobs:
 
       # Build da aplicação com Maven
       - name: Build with Maven
+        working-directory: ./app-for-pets
         run: mvn clean package -DskipTests
 
       # Build da imagem Docker
