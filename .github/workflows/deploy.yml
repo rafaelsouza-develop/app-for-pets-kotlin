@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       # Configura o Java
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v1
         with:
           java-version: '17'
@@ -26,7 +26,7 @@ jobs:
 
       # Build da imagem Docker
       - name: Build Docker image
-        run: docker build -t petfinder-api .
+        run: docker build -t app-for-pets .
 
       # Loga no DockerHub (caso você queira usar)
       - name: Log in to DockerHub
@@ -37,7 +37,7 @@ jobs:
 
       # Pusha a imagem para o DockerHub
       - name: Push Docker image
-        run: docker push your-dockerhub-username/petfinder-api
+        run: docker push rsouzaribeiro/app-for-pets-kotlin
 
   deploy:
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            docker pull your-dockerhub-username/petfinder-api
-            docker stop petfinder-api || true
-            docker rm petfinder-api || true
-            docker run -d -p 8080:8080 your-dockerhub-username/petfinder-api
+            docker pull rsouzaribeiro/app-for-pets-kotlin
+            docker stop app-for-pets-kotlin || true
+            docker rm app-for-pets-kotlin || true
+            docker run -d -p 8080:8080 rsouzaribeiro/app-for-pets-kotlin

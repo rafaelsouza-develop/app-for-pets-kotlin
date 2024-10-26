@@ -5,10 +5,10 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copiar o arquivo JAR gerado para dentro do container
-COPY target/petfinder-api.jar /app/petfinder-api.jar
+COPY target/app-for-pets.jar /app/app-for-pets.jar
 
 # Expor a porta em que o Spring Boot roda (8080 por padrão)
 EXPOSE 8080
 
 # Comando para rodar a aplicação
-ENTRYPOINT ["java", "-jar", "/app/petfinder-api.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app-for-pets.jar"]
